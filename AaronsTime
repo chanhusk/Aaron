@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron's Time Translation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
 
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-label {
+            font-size: 16px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        select {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .result-box {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        .result-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .result-time {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Aaron's Time Translation</h1>
+        
+        <div class="dropdown-container">
+            <div class="dropdown-label">Aaron's minutes:</div>
+            <select id="aaronMinutes" onchange="calculateTime()">
+                <option value="">Select time</option>
+                <option value="5">5 minutes</option>
+                <option value="10">10 minutes</option>
+                <option value="15">15 minutes</option>
+                <option value="20">20 minutes</option>
+                <option value="25">25 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="35">35 minutes</option>
+                <option value="40">40 minutes</option>
+                <option value="45">45 minutes</option>
+                <option value="50">50 minutes</option>
+            </select>
+        </div>
+
+        <div class="result-box">
+            <div class="result-title">How long it will actually take this nigga to get on:</div>
+            <div class="result-time" id="realTime">Select time above</div>
+        </div>
+    </div>
+
+    <script>
+        function calculateTime() {
+            const aaronMinutes = parseInt(document.getElementById('aaronMinutes').value);
+            const realTimeDisplay = document.getElementById('realTime');
+            
+            let realTime = '';
+            
+            if (aaronMinutes > 30) {
+                realTime = 'Good luck nigga';
+            } else {
+                switch(aaronMinutes) {
+                    case 5:
+                        realTime = '30 minutes';
+                        break;
+                    case 10:
+                        realTime = '45 minutes';
+                        break;
+                    case 15:
+                        realTime = '1 hour';
+                        break;
+                    case 20:
+                        realTime = '1 hour 30 minutes';
+                        break;
+                    case 25:
+                        realTime = '1 hour 45 minutes';
+                        break;
+                    case 30:
+                        realTime = '2 hours';
+                        break;
+                    default:
+                        realTime = 'Select time above';
+                }
+            }
+            
+            realTimeDisplay.textContent = realTime;
+        }
+    </script>
+</body>
+</html>
